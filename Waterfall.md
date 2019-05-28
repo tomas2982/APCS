@@ -1,9 +1,5 @@
 The Waterfall Model:
 
-
- 
-Figure 1: The design process of a Waterfall Method.
-
 With the waterfall method, software is developed from scratch and, therefore, the model needs to be more concrete and stricter. 
 To avoid redesigning a whole new system, the requirements and software design have to be solid in order to solve the problem. 
 
@@ -17,7 +13,8 @@ There also must be users, professors and an admin who should be able to access t
 Each user must have different permissions as a professor should not be able to register for classes and students should not be able to see the roster.
 Constraints can be more technical as a user should be given a user interface and the database should be readable 
 
-System and Software Design: Once a solid list of requirements and constraints is established, the next step is to actually develop the architecture and components of the system.
+System and Software Design: 
+Once a solid list of requirements and constraints is established, the next step is to actually develop the architecture and components of the system.
 When designing a system like CURSE, there needs to be solid architecture in order for the system to not fail.
 With so much traffic at one time, the system must be able to handle or distribute the load so that the system will not crash. 
 
