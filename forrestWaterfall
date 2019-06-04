@@ -1,0 +1,44 @@
+A waterfall model is used to plan the project of developing a Course User Registration System Emulator (CURSE).
+With the given requirement for the system, CURSE can be put on a timeline with a clear view of beginning to end tasks.
+
+1.	Requirements analysis and definition
+A user interface is needed for the user to be able to interact with the software.
+At the interface level a user will need to log in to determine the type of user they are.
+Different users like students, instructors, and admins will have different capabilities.
+The student can register, look at the available courses, and view their own schedule.
+The instructor will see courses and the roster for their courses.
+The admin has permission to edit everything. The different users will be kept in a database of users.
+To register for courses there will have to be a database with courses and relevant information such as CRN, course name, and instructor.
+The software should be able to handle multiple semesters, course time conflicts, printing out schedules, and scheduling preferences. 
+
+2.	System and software design
+The software will run on a local PC. The local host will host the database for the application to use.
+The local database can be hosted on a web server with the use of XAMPP.
+XAMPP is a good choice to work with because it has cross-platform capabilities.
+The UI of the program can be accomplished in Java in the console on an IDE with basic system input and output statements.
+Java has object-oriented capabilities to use the data from the databases well. 
+The code will be hosted on github so proper version control best practices can take place. 
+
+3.	Implementation and unit testing
+Each software component will be fully developed before moving on to the next component.
+The database for users should be built first. This should be able to hold 100 students, 10 instructors, and 1 admin.
+This will be done in subtasks by making three different types of user that contain different data.
+A constraint is needed here to make sure that a student is taking the right number of courses, not too little or too many.
+The database of courses will be built next. This will be set up using CRN’s of the courses as the primary key, the instructor
+information will pull form the database of users and the course name and time will be set manually.
+There will need to be a counter on the courses for registered students, so it is known when the class is full.
+The login and user interface will be completed next. The UI will be able to be tested with using the user and course databases. 
+The different functionalities of the different types of users will have to be fully tested. 
+
+4.	Integration and system testing
+Many units will be written independently of one another.
+On github, the master branch of the code can be branched off into a feature branch to be merged back in once the feature is completed.
+Each independent software unit has been tested on its own to the extent of its constraints.
+It is unknown if merging each unit together will cause conflicts. 
+After the software units have been merged together a full regression effort will take place to ensure the absence of any merge conflicts. 
+If any issues are found, they can be addressed and retested. 
+
+5.	Operation and maintenance 
+This process is ideal for one-time releases. If any bugs are found after the software has been rolled out into production, or if the
+requirements change, the software will have to be updated to maintain the integrity of the system. 
+
