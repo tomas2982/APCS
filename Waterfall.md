@@ -49,6 +49,12 @@ This should also include tests for the system architecture.
 There will be a large number of users signing in at the same time and attempting to register at the same time.
 A good test would be to simulate a registration with a large amount of users to see if the program will be able to handle the load.
 
+On github, the master branch of the code can be branched off into a feature branch to be merged back in once the feature is completed.
+Each independent software unit has been tested on its own to the extent of its constraints.
+It is unknown if merging each unit together will cause conflicts. 
+After the software units have been merged together a full regression effort will take place to ensure the absence of any merge conflicts. 
+If any issues are found, they can be addressed and retested. 
+
 Operation and maintenance: 
 While the system may seem bulletproof, everything will eventually break and there must be maintenance performed by the admin.
 Some common bugs could include failure at logging in, failure of registering for a class, failure of viewing the courses correctly, and failing because the website crashed. Over time the requirements of the system may evolve as well. The software may become popular and require a larger database, or different functionality may need to be added. If these events occur, they will be addressed with by restarting the waterfall development process. 
