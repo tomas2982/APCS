@@ -4,13 +4,15 @@
 
 #ifndef UNTITLED_STUDENT_H
 #define UNTITLED_STUDENT_H
+
 #include <string>
 #include <iostream>
 #include <list>
 #include <fstream>
-class user{
+
+class user {
 protected:
-    std::string name;
+    std::string name, email;
 };
 
 class student : public user {
@@ -18,29 +20,34 @@ protected:
     std::string major;
     std::list<int> crn;
 public:
-    student(){
-    }
-    ~student(){}
+    student() = default;
 
-    void setName(std::string n){
-        name = n;
-    }
-    void setMajor(std::string m){
-        major = m;
-    }
-    void setCrn(int number){
-        crn.push_back (number);
+    ~student() = default;
 
+    void setName(std::string n) {
+        name = std::move(n);
     }
 
-    void print(){
+    void setMajor(std::string m) {
+        major = std::move(m);
+    }
+
+    void setCrn(int number) {
+        crn.push_back(number);
+
+    }
+
+    void print() {
         std::cout << "Name: " + name + "\nMajor: " + major + "\nRegistered classes:";
-        for(std::list<int>::iterator it=crn.begin(); it != crn.end(); it++){
-            std::cout << *it << " ";
+        for (int &it : crn) {
+            std::cout << it << " ";
         }
         std::cout << "\n";
     }
 
 };
 
+class admin : public user{
+
+};
 #endif //UNTITLED_STUDENT_H
