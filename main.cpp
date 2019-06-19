@@ -89,7 +89,7 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        }else{std::cout << "nInvalid Entry. Please try again\n";}
+        }else{std::cout << "Invalid Entry. Please try again\n";}
         }
 
     }
