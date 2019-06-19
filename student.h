@@ -50,4 +50,8 @@ public:
 class admin : public user{
 
 };
+
+class instructor : public user{
+
+};
 #endif //UNTITLED_STUDENT_H
