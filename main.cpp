@@ -14,12 +14,10 @@ int main() {
     int choice = 0;
     int x = 0;
     int loggedInCred = 0;
-
+    bool loggedIn = 1;
+    loginfunc:
     loggedInCred = login();
 
-//    while (!loggedIn) {
-//        loggedIn = login();
-//    }
     /**
      * menu for admin
      *
@@ -27,14 +25,20 @@ int main() {
     if (loggedInCred == 1) {
         //list of students
         std::list<student> students;
-        while (1) {
+        bool keepRunning = 1;
+        while (keepRunning) {
             std::cout
-                    << "Welcome to course registration main menu!\nEnter 1 to add a student\nEnter 2 to print all\nEnter 0 to exit\n";
+                    << "Welcome to course registration main menu!"
+                       "\nEnter 0 to exit"
+                       "\nEnter 1 to add a student"
+                       "\nEnter 2 to print all"
+                       "\nEnter 3 to logout\n";
             std::cin >> choice;
             if (choice == 1) {
                 //add student
                 student stu;
-                std::cout << "You wish to add a student\nPlease enter the name\n";
+                std::cout << "You wish to add a student\n"
+                             "Please enter the name\n";
                 //store input of name and later major
                 std::string n = "";
                 std::string m = "";
@@ -66,18 +70,34 @@ int main() {
             } else if (choice == 0) {
                 std::cout << "exiting\n";
                 break;
+            } else if (choice == 3) {
+                goto loginfunc;
             } else { std::cout << "Invalid input\n"; }
 
         }//while
     }//if for admin
-    else if(loggedInCred == 2){
+    else if (loggedInCred == 2) {
+        bool run = 1;
+        while (run) {
+            std::cout << "Enter 0 to log out\n";
+            int in = 0;
+            std::cin >> in;
+            if (in == 0) {
+                goto loginfunc;
+            }
+        }
+    } else if (loggedInCred == 3) {
+        bool run = 1;
+        while (run) {
+            std::cout << "Enter 0 to log out\n";
+            int in = 0;
+            std::cin >> in;
+            if (in == 0) {
+                goto loginfunc;
 
-        std::cout << "I'm the instructor menu\n";
+            }
+        }
     }
-    else if (loggedInCred == 3){
-        std::cout <<  "I'm the student menu\n";
-    }
-
     return 0;
 
 }//main
@@ -89,11 +109,11 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        }else{std::cout << "Invalid Entry. Please try again\n";}
-        }
-
+        } else { std::cout << "Invalid Entry. Please try again\n"; }
     }
-    //    std::cout << "Enter Username: \n";
+
+}
+//    std::cout << "Enter Username: \n";
 //    std::string username;
 //    std::cin >> username;
 //    std::cout << "Enter Password: \n";
