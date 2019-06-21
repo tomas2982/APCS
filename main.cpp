@@ -100,15 +100,45 @@ int main() {
     }//if for admin
     else if (loggedInCred == 2) {
         bool run = 1;
-        while (run) {
-            std::cout << "Enter 0 to log out\n";
-            int in = 0;
-            std::cin >> in;
-            if (in == 0) {
-                goto loginfunc;
-            }
+        int in = 0;
+        while (run){
+                std::cout << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to logout\n";
+                std::cin >> in;
+                if(in == 1)
+                {
+                    student stu;
+                    std::cout << "Enter the number of courses to enter\n";
+                    std::cin >> x;
+                    std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
+                    int crns = 0;
+                    //need to know which student to add crn to
+//                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+//                        std::cin >> crns;
+//                        stu.setCrn(crns);
+//                    }
+                    //add student to list
+                    students.push_back(stu);
+                }//if
+                else if(in == 2)
+                {
+                    //this prints for all students -> should just print the courses for the studen
+                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+                        it->print();
+                        std::cout << "-----------------------\n";
+                    }
+                }//if
+                else if(in == 0)
+                {
+                    std::cout << "logging out\n";
+                    goto loginfunc;
+                }
+                else
+                {
+                    std::cout << "Invalid input\n";
+                }
         }
-    } else if (loggedInCred == 3) {
+    }
+     else if (loggedInCred == 3) {
         bool run = 1;
         while (run) {
             std::cout << "Enter 0 to log out\n";
@@ -126,7 +156,7 @@ int main() {
 
 int login() {
     while (1) {
-        std::cout << "Enter 1 for admin 2 for instructor and 3 for student\n";
+        std::cout << "Enter 1 for admin 2 for student and 3 for instructor\n";
         int choice = 0;
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
