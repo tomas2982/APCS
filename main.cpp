@@ -71,8 +71,43 @@ int main() {
         }//while
     }//if for admin
     else if(loggedInCred == 2){
-
-        std::cout << "I'm the instructor menu\n";
+		std::list<student> students;
+        std::cout << "Welcome to course registration main menu!\n";
+		while(1)
+		{
+			std::cout << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to exit\n";
+			std::cin >> choice;
+			if(choice == 1)
+			{
+				student stu;
+				std::cout << "Enter the number of courses to enter\n";
+                std::cin >> x;
+                std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
+                int crns = 0;
+                for (int i = 0; i < x; i++) {
+                    std::cin >> crns;
+                    stu.setCrn(crns);
+                }
+                //add student to list
+                students.push_back(stu);
+			}//if
+			else if(choice == 2)
+			{
+				for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+                    it->print();
+                    std::cout << "-----------------------\n";
+                }
+			}//if
+			else if(choice == 0)
+			{
+				std::cout << "exiting\n";
+				break;
+			}
+			else
+			{
+				std::cout << "Invalid input\n";
+			}
+		}//while loop
     }
     else if (loggedInCred == 3){
         std::cout <<  "I'm the student menu\n";
