@@ -8,6 +8,7 @@
 class course{
 public:
     std::string name;
+    int crn;
     course() = default;
     ~course() = default;
 

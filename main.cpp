@@ -13,6 +13,7 @@ int login();
 int main() {
     //list of students
     std::list<student> students;
+    std::list<course> courses;
     int choice = 0;
     int x = 0;
     int loggedInCred = 0;
@@ -32,8 +33,10 @@ int main() {
                     << "Welcome to course registration main menu!"
                        "\nEnter 0 to exit"
                        "\nEnter 1 to add a student"
-                       "\nEnter 2 to print all"
-                       "\nEnter 3 to logout\n";
+                       "\nEnter 2 to print all students"
+                       "\nEnter 3 to add new course"
+                       "\nEnter 4 to print courses"
+                       "\nEnter 5 to logout\n";
             std::cin >> choice;
             if (choice == 1) {
                 //add student
@@ -68,10 +71,28 @@ int main() {
                     it->print();
                     std::cout << "-----------------------\n";
                 }
-            } else if (choice == 0) {
+            }
+            else if (choice == 3){//add course
+                course c;
+                std::cout <<"You wish to enter a course\n"
+                            "Please Enter the course name\n";
+                std::string n = "";
+                std::cin.ignore();
+                std::getline(std::cin, n);
+                c.setName(n);
+                courses.push_back(c);
+
+                }
+            else if(choice == 4){
+                for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it){
+                    it->print();
+                    std::cout << "-----------------\n";
+                }
+            }
+            else if (choice == 0) {
                 std::cout << "exiting\n";
                 break;
-            } else if (choice == 3) {
+            } else if (choice == 5) {
                 goto loginfunc;
             } else { std::cout << "Invalid input\n"; }
 
