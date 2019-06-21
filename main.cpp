@@ -11,6 +11,8 @@
 int login();
 
 int main() {
+    //list of students
+    std::list<student> students;
     int choice = 0;
     int x = 0;
     int loggedInCred = 0;
@@ -23,8 +25,7 @@ int main() {
      *
      */
     if (loggedInCred == 1) {
-        //list of students
-        std::list<student> students;
+
         bool keepRunning = 1;
         while (keepRunning) {
             std::cout
