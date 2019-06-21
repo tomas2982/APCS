@@ -6,7 +6,7 @@
 //https://www.geeksforgeeks.org/getline-string-c/ for getline()
 
 #include "users.h"
-
+#include "courses.h"
 
 int login();
 
