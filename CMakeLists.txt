@@ -3,4 +3,4 @@ project(Curse)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(curse main.cpp)
+add_executable(curse main.cpp courses.h)
