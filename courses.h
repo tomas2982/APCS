@@ -7,16 +7,23 @@
 
 class course{
 public:
-    std::string name;
-    int crn;
+    std::string name, level;
+    int crn =0;
     course() = default;
     ~course() = default;
 
     void setName(std::string n){
         name = n;
     }
+    void setCrn(int crnNum){
+        crn = crnNum;
+    }
+    int getCrn(){
+        return crn;
+    }
     void print(){
-        std::cout << "Course name is :" + name + "\n";
+        std::cout << "Course name:" + name + "\nCrn:";
+        std::cout << getCrn();
     }
 };
 
