@@ -81,7 +81,7 @@ int main() {
                     std::cin.ignore();
                     std::getline(std::cin, n);
                     c.setName(n);
-                    std::cout <<"Enter the CRN number for the course\n";
+                    std::cout << "Enter the CRN number for the course\n";
                     std::cin >> crn;
                     c.setCrn(crn);
                     courses.push_back(c);
@@ -92,14 +92,16 @@ int main() {
                         std::cout << "\n-----------------\n";
                     }
                 } else if (choice == 5) {
-                    std::cout << "You wish to remove a course\nPlease enter CRN number for course";
+                    std::cout << "You wish to remove a course\nPlease enter CRN number for course\n";
                     int num = 0;
                     std::cin >> num;
-                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-                        if (num == it->getCrn()){
-                              courses.erase(it);
-                              std::cout << "Im here!\n";
-                         // it->print();
+                    std::list<course>::iterator it2 = courses.end();
+                    for (std::list<course>::iterator it = courses.begin(); it != it2; ++it) {
+                        if (it->getCrn() == num) {
+                            courses.erase(it);
+                            //reset head and tail
+                            it = courses.begin();
+                            it2 = courses.end();
                         }
                     }
 
@@ -181,8 +183,9 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        } else { std::cout << "Invalid Entry. Please try again\n"; }
-        if (choice == 4) { break; }
+        }
+        else if (choice == 4) { exit(0); }
+        else { std::cout << "Invalid Entry. Please try again\n"; }
     }
 }
 
