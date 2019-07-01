@@ -78,9 +78,13 @@ int main() {
                                  "Please Enter the course name\n";
                     std::string n = "";
                     int crn = 0;
+                    int level = 0;
                     std::cin.ignore();
                     std::getline(std::cin, n);
                     c.setName(n);
+                    std::cout << "Enter the level for the course\n";
+                    std::cin >> level;
+                    c.setLevel(level);
                     std::cout << "Enter the CRN number for the course\n";
                     std::cin >> crn;
                     c.setCrn(crn);
@@ -92,19 +96,21 @@ int main() {
                         std::cout << "\n-----------------\n";
                     }
                 } else if (choice == 5) {
-                    std::cout << "You wish to remove a course\nPlease enter CRN number for course\n";
-                    int num = 0;
-                    std::cin >> num;
-                    std::list<course>::iterator it2 = courses.end();
-                    for (std::list<course>::iterator it = courses.begin(); it != it2; ++it) {
-                        if (it->getCrn() == num) {
-                            courses.erase(it);
-                            //reset head and tail
-                            it = courses.begin();
-                            it2 = courses.end();
+                    if (courses.size() == NULL) { std::cout << "The course list is already empty\n"; }
+                    else {
+                        std::cout << "You wish to remove a course\nPlease enter CRN number for course\n";
+                        int num = 0;
+                        std::cin >> num;
+                        std::list<course>::iterator it2 = courses.end();
+                        for (std::list<course>::iterator it = courses.begin(); it != it2; ++it) {
+                            if (it->getCrn() == num) {
+                                courses.erase(it);
+                                //reset head and tail
+                                it = courses.begin();
+                                it2 = courses.end();
+                            }
                         }
                     }
-
                 } else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
@@ -183,8 +189,7 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        }
-        else if (choice == 4) { exit(0); }
+        } else if (choice == 4) { exit(0); }
         else { std::cout << "Invalid Entry. Please try again\n"; }
     }
 }
