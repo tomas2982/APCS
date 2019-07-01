@@ -18,141 +18,160 @@ int main() {
     int choice = 0;
     int x = 0;
     int loggedInCred = 0;
-    bool loggedIn = 1;
-  while (loggedIn) {
-      loggedInCred = login();
+    bool loggedIn = true;
+    while (loggedIn) {
+        loggedInCred = login();
 
-      /**
-       * menu for admin
-       *
-       */
-      if (loggedInCred == 1) {
+        /**
+         * menu for admin
+         *
+         */
+        if (loggedInCred == 1) {
 
-          bool keepRunning = 1;
-          while (keepRunning) {
-              std::cout
-                      << "Welcome to course registration main menu!"
-                         "\nEnter 0 to logout"
-                         "\nEnter 1 to add a student"
-                         "\nEnter 2 to print all students"
-                         "\nEnter 3 to add new course"
-                         "\nEnter 4 to print courses\n";
-              std::cin >> choice;
-              if (choice == 1) {
-                  //add student
-                  student stu;
-                  std::cout << "You wish to add a student\n"
-                               "Please enter the name\n";
-                  //store input of name and later major
-                  std::string n = "";
-                  std::string m = "";
-                  //cin.ignore() needed for the cin to get the correct user input
-                  std::cin.ignore();
-                  std::getline(std::cin, n);
-                  stu.setName(n);
-                  std::cout << "Please enter major\n";
-                  std::getline(std::cin, m);
-                  stu.setMajor(m);
-                  //number of courses to initially enter
-                  std::cout << "Enter the number of courses to enter\n";
-                  std::cin >> x;
-                  std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
-                  int crns = 0;
-                  for (int i = 0; i < x; i++) {
-                      std::cin >> crns;
-                      stu.setCrn(crns);
-                  }
-                  //add student to list
-                  students.push_back(stu);
+            bool keepRunning = 1;
+            while (keepRunning) {
+                std::cout
+                        << "Welcome to course registration main menu!"
+                           "\nEnter 0 to logout"
+                           "\nEnter 1 to add a student"
+                           "\nEnter 2 to print all students"
+                           "\nEnter 3 to add new course"
+                           "\nEnter 4 to print courses"
+                           "\nEnter 5 to remove course(s)\n";
+                std::cin >> choice;
+                if (choice == 1) {
+                    //add student
+                    student stu;
+                    std::cout << "You wish to add a student\n"
+                                 "Please enter the name\n";
+                    //store input of name and later major
+                    std::string n = "";
+                    std::string m = "";
+                    //cin.ignore() needed for the cin to get the correct user input
+                    std::cin.ignore();
+                    std::getline(std::cin, n);
+                    stu.setName(n);
+                    std::cout << "Please enter major\n";
+                    std::getline(std::cin, m);
+                    stu.setMajor(m);
+                    //number of courses to initially enter
+                    std::cout << "Enter the number of courses to enter\n";
+                    std::cin >> x;
+                    std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
+                    int crns = 0;
+                    for (int i = 0; i < x; i++) {
+                        std::cin >> crns;
+                        stu.setCrn(crns);
+                    }
+                    //add student to list
+                    students.push_back(stu);
 
-              } else if (choice == 2) {
-                  //iterator of type student to access each objects print function
-                  for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
-                      it->print();
-                      std::cout << "-----------------------\n";
-                  }
-              } else if (choice == 3) {//add course
-                  course c;
-                  std::cout << "You wish to enter a course\n"
-                               "Please Enter the course name\n";
-                  std::string n = "";
-                  std::cin.ignore();
-                  std::getline(std::cin, n);
-                  c.setName(n);
-                  courses.push_back(c);
+                } else if (choice == 2) {
+                    //iterator of type student to access each objects print function
+                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+                        it->print();
+                        std::cout << "-----------------------\n";
+                    }
+                } else if (choice == 3) {//add course
+                    course c;
+                    std::cout << "You wish to enter a course\n"
+                                 "Please Enter the course name\n";
+                    std::string n = "";
+                    int crn = 0;
+                    std::cin.ignore();
+                    std::getline(std::cin, n);
+                    c.setName(n);
+                    std::cout << "Enter the CRN number for the course\n";
+                    std::cin >> crn;
+                    c.setCrn(crn);
+                    courses.push_back(c);
 
-              } else if (choice == 4) {
-                  for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-                      it->print();
-                      std::cout << "-----------------\n";
-                  }
-              } else if (choice == 0) {
-                  std::cout << "exiting\n";
-                  break;
-              } else { std::cout << "Invalid input\n"; }
+                } else if (choice == 4) {
+                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
+                        it->print();
+                        std::cout << "\n-----------------\n";
+                    }
+                } else if (choice == 5) {
+                    std::cout << "You wish to remove a course\nPlease enter CRN number for course\n";
+                    int num = 0;
+                    std::cin >> num;
+                    std::list<course>::iterator it2 = courses.end();
+                    for (std::list<course>::iterator it = courses.begin(); it != it2; ++it) {
+                        if (it->getCrn() == num) {
+                            courses.erase(it);
+                            //reset head and tail
+                            it = courses.begin();
+                            it2 = courses.end();
+                        }
+                    }
 
-          }//while
-      }//end admin if
-          /**
-           * Menu for Student
-           */
-      else if (loggedInCred == 2) {
-          bool run = 1;
-          int in = 0;
-          while (run) {
-              std::cout << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to logout\n";
-              std::cin >> in;
-              if (in == 1) {
-                  student stu;
-                  std::cout << "Enter the number of courses to enter\n";
-                  std::cin >> x;
-                  std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
-                  int crns = 0;
-                  //need to know which student to add crn to
+                } else if (choice == 0) {
+                    std::cout << "exiting\n";
+                    break;
+                } else { std::cout << "Invalid input\n"; }
+
+            }//while
+        }//end admin if
+            /**
+             * Menu for Student
+             */
+        else if (loggedInCred == 2) {
+            bool run = 1;
+            int in = 0;
+            while (run) {
+                std::cout << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to logout\n";
+                std::cin >> in;
+                if (in == 1) {
+                    student stu;
+                    std::cout << "Enter the number of courses to enter\n";
+                    std::cin >> x;
+                    std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
+                    int crns = 0;
+                    //need to know which student to add crn to
 //                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
 //                        std::cin >> crns;
 //                        stu.setCrn(crns);
 //                    }
-                  //add student to list
-                  students.push_back(stu);
-              }//if
-              else if (in == 2) {
-                  //this prints for all students -> should just print the courses for the studen
-                  for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
-                      it->print();
-                      std::cout << "-----------------------\n";
-                  }
-              }//if
-              else if (in == 0) {
-                  std::cout << "logging out\n";
-                  break;
-              } else {
-                  std::cout << "Invalid input\n";
-              }
-          }
-      }
-          /**
-           * menu for instructor
-           */
-      else if (loggedInCred == 3) {
-          bool run = 1;
-          while (run) {
-              std::cout << "Enter 0 to log out\nEnter 1 to print courses\n";
-              int in = 1;
-              std::cin >> in;
-              if (in == 0) {
-                  break;
+                    //add student to list
+                    students.push_back(stu);
+                }//if
+                else if (in == 2) {
+                    //this prints for all students -> should just print the courses for the studen
+                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+                        it->print();
+                        std::cout << "-----------------------\n";
+                    }
+                }//if
+                else if (in == 0) {
+                    std::cout << "logging out\n";
+                    break;
+                } else {
+                    std::cout << "Invalid input\n";
+                }
+            }
+        }
+            /**
+             * menu for instructor
+             */
+        else if (loggedInCred == 3) {
+            bool run = 1;
+            while (run) {
+                std::cout << "Enter 0 to log out\nEnter 1 to print courses\n";
+                int in = 1;
+                std::cin >> in;
+                if (in == 0) {
+                    break;
 
-              } else if (in == 1) {
-                  //print classes that teacher is teaching
-                  for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-                      //find if course is for instructor
-                      it->print();
-                  }
-              }
-          }
-      }
-  }
+                } else if (in == 1) {
+                    //print classes that teacher is teaching
+                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
+                        //find if course is for instructor
+                        it->print();
+                    }
+                }
+            }
+        }
+    }
     return 0;
 
 }//main
@@ -164,8 +183,9 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        } else { std::cout << "Invalid Entry. Please try again\n"; }
-        if(choice == 4){break;}
+        }
+        else if (choice == 4) { exit(0); }
+        else { std::cout << "Invalid Entry. Please try again\n"; }
     }
 }
 
