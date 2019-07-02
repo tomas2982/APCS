@@ -7,7 +7,7 @@
 
 class course{
 public:
-    std::string name;
+    std::string name, instructor;
     int level = 0;
     int crn =0;
     course() = default;
@@ -15,6 +15,9 @@ public:
 
     void setName(std::string n){
         name = n;
+    }
+    void setInstructor(std::string in){
+        instructor = in;
     }
     void setLevel(int l){
         level = l;
@@ -28,11 +31,15 @@ public:
     int getLevel(){
         return level;
     }
+    std::string getInstructor(){
+        return instructor;
+    }
     void print(){
         std::cout << "Course name: " + name + "\nCrn: ";
         std::cout << getCrn();
         std::cout << "\nCourse Level: ";
         std::cout << getLevel();
+        std::cout << "\nInstructor: " + getInstructor();
     }
 };
 

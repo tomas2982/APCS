@@ -15,6 +15,7 @@ int main() {
     //list of students
     std::list<student> students;
     std::list<course> courses;
+    std::list<instructor> instructors;
     int choice = 0;
     int x = 0;
     int loggedInCred = 0;
@@ -77,6 +78,7 @@ int main() {
                     std::cout << "You wish to enter a course\n"
                                  "Please Enter the course name\n";
                     std::string n = "";
+                    std::string in = "";
                     int crn = 0;
                     int level = 0;
                     std::cin.ignore();
@@ -88,6 +90,10 @@ int main() {
                     std::cout << "Enter the CRN number for the course\n";
                     std::cin >> crn;
                     c.setCrn(crn);
+                    std::cout <<"Enter the instructor\n";
+                    std::cin.ignore();
+                    std::getline(std::cin, in);
+                    c.setInstructor(in);
                     courses.push_back(c);
 
                 } else if (choice == 4) {
