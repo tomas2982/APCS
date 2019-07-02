@@ -11,8 +11,20 @@
 #include <fstream>
 
 class user {
-protected:
+public:
     std::string name, email;
+    void setName(std::string n) {
+        name = std::move(n);
+    }
+    void setEmail(std::string e){
+        email = e;
+    }
+    std::string getName(){
+        return name;
+    }
+    std::string getEmail(){
+        return email;
+    }
 };
 
 class student : public user {
@@ -24,9 +36,7 @@ public:
 
     ~student() = default;
 
-    void setName(std::string n) {
-        name = std::move(n);
-    }
+
 
     void setMajor(std::string m) {
         major = std::move(m);

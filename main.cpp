@@ -38,7 +38,8 @@ int main() {
                            "\nEnter 2 to print all students"
                            "\nEnter 3 to add new course"
                            "\nEnter 4 to print courses"
-                           "\nEnter 5 to remove course(s)\n";
+                           "\nEnter 5 to remove course(s)"
+                           "\nEnter 6 to add instructor\n";
                 std::cin >> choice;
                 if (choice == 1) {
                     //add student
@@ -117,7 +118,11 @@ int main() {
                             }
                         }
                     }
-                } else if (choice == 0) {
+                }
+                else if(choice == 6){
+
+                }
+                else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
                 } else { std::cout << "Invalid input\n"; }
