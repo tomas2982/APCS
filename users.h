@@ -13,16 +13,27 @@
 class user {
 public:
     std::string name, email;
+    int id;
+
+    void setId(int idNum) {
+        id = idNum;
+    }
+
+    int getId() { return id; }
+
     void setName(std::string n) {
         name = std::move(n);
     }
-    void setEmail(std::string e){
+
+    void setEmail(std::string e) {
         email = e;
     }
-    std::string getName(){
+
+    std::string getName() {
         return name;
     }
-    std::string getEmail(){
+
+    std::string getEmail() {
         return email;
     }
 };
@@ -35,7 +46,6 @@ public:
     student() = default;
 
     ~student() = default;
-
 
 
     void setMajor(std::string m) {
@@ -57,11 +67,12 @@ public:
 
 };
 
-class admin : public user{
+class admin : public user {
 
 };
 
-class instructor : public user{
+class instructor : public user {
 
 };
+
 #endif //UNTITLED_STUDENT_H
