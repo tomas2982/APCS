@@ -135,28 +135,38 @@ int main() {
         else if (loggedInCred == 2) {
             bool run = 1;
             int in = 0;
+			//Name of student should be assoc. with credentials.
+			std::cout <<"Please enter the name\n"; 
+			std::string n = "";
+			std::cin.ignore();
+            std::getline(std::cin, n);
+			stu.setName(n);
             while (run) {
                 std::cout << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to logout\n";
                 std::cin >> in;
                 if (in == 1) {
-                    student stu;
                     std::cout << "Enter the number of courses to enter\n";
                     std::cin >> x;
                     std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
                     int crns = 0;
-                    //need to know which student to add crn to
-//                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
-//                        std::cin >> crns;
-//                        stu.setCrn(crns);
-//                    }
-                    //add student to list
-                    students.push_back(stu);
+                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) 
+					{
+						if(it->getName()==n)//if name of iterator is set to input name
+						{
+							std::cin >> crns;
+							stu.setCrn(crns);
+						}//if
+                    }//for loop to go through list of students
                 }//if
                 else if (in == 2) {
-                    //this prints for all students -> should just print the courses for the studen
-                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
-                        it->print();
-                        std::cout << "-----------------------\n";
+                    //this prints for all students -> should just print the courses for the student
+                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) 
+					{
+						if(it->getName()==n)//if name of iterator is set to input name
+						{
+							it->print();
+							std::cout << "-----------------------\n";
+						}//if
                     }
                 }//if
                 else if (in == 0) {
