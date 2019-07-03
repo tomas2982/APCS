@@ -103,7 +103,7 @@ int main() {
                         std::cout << "\n-----------------\n";
                     }
                 } else if (choice == 5) {
-                    if (courses.size() == NULL) { std::cout << "The course list is already empty\n"; }
+                    if (courses.size() == 0) { std::cout << "The course list is already empty\n"; }
                     else {
                         std::cout << "You wish to remove a course\nPlease enter CRN number for course\n";
                         int num = 0;
@@ -133,6 +133,7 @@ int main() {
              * Menu for Student
              */
         else if (loggedInCred == 2) {
+            student stu;
             bool run = 1;
             int in = 0;
 			//Name of student should be assoc. with credentials.
