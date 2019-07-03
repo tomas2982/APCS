@@ -182,23 +182,46 @@ int main() {
              * menu for instructor
              */
         else if (loggedInCred == 3) {
-            bool run = 1;
-            while (run) {
-                std::cout << "Enter 0 to log out\nEnter 1 to print courses\n";
-                int in = 1;
-                std::cin >> in;
-                if (in == 0) {
-                    break;
+			bool run = 1;
+			while (run) {
+				std::cout << "\nEnter 0 to log out\nEnter 1 to display courses\nEnter 2 to display course rosters\n";
+				int in = 1;
+				std::cin >> in;
+				if (in == 0) {
+					std::cout << "Logging out\n";
+					break;
 
-                } else if (in == 1) {
-                    //print classes that teacher is teaching
-                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-                        //find if course is for instructor
-                        it->print();
-                    }
-                }
-            }
-        }
+				}
+				else if (in == 1) {
+					//prints all courses
+					for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
+						//find if course is for instructor
+						it->print();
+						std::cout << "\n-----------------\n";
+					}
+
+				}
+				else if (in == 2) {
+					//prints courses and their rosters
+					for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
+						temp_crn = it->crn;
+
+							for (std::list<student>::iterator i = students.begin(); i != students.end(); ++i) {
+								if (student->crn == temp_crn) {
+									i->print();
+								}
+								//i->print();
+							//std::cout << i;
+						}
+						std::cout << "\n-----------------\n";
+					}
+				}
+
+				else {
+					std::cout << "Invalid Input";
+				}
+			}
+		}
     }
     return 0;
 
