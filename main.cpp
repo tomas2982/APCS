@@ -120,7 +120,6 @@ int main() {
                     }
                 }
                 else if(choice == 6){
-
                 }
                 else if (choice == 0) {
                     std::cout << "exiting\n";
@@ -202,14 +201,15 @@ int main() {
 
 				}
 				else if (in == 2) {
+
 					//prints courses and their rosters
 					for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-						temp_crn = it->crn;
+					//	temp_crn = it->crn;
 
 							for (std::list<student>::iterator i = students.begin(); i != students.end(); ++i) {
-								if (student->crn == temp_crn) {
+						//		if (student->crn == temp_crn) {
 									i->print();
-								}
+							//	}
 								//i->print();
 							//std::cout << i;
 						}
@@ -234,7 +234,7 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        } else if (choice == 4) { exit(0); }
+        } else if (choice == 4) { break; }
         else { std::cout << "Invalid Entry. Please try again\n"; }
     }
 }

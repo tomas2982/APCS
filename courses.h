@@ -8,10 +8,10 @@
 class course{
 public:
     std::string name, instructor;
-    int level = 0;
-    int crn =0;
-    course() = default;
-    ~course() = default;
+    int level;
+    int crn;
+    course() {}
+    ~course() {}
 
     void setName(std::string n){
         name = n;

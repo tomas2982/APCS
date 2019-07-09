@@ -22,7 +22,7 @@ public:
     int getId() { return id; }
 
     void setName(std::string n) {
-        name = std::move(n);
+        name = n;
     }
 
     void setEmail(std::string e) {
@@ -43,13 +43,13 @@ protected:
     std::string major;
     std::list<int> crn;
 public:
-    student() = default;
+    student(){}
 
-    ~student() = default;
+    ~student() {}
 
 
     void setMajor(std::string m) {
-        major = std::move(m);
+        major = m;
     }
 
     void setCrn(int number) {
@@ -59,8 +59,8 @@ public:
 
     void print() {
         std::cout << "Name: " + name + "\nMajor: " + major + "\nRegistered classes:";
-        for (int &it : crn) {
-            std::cout << it << " ";
+        for (std::list<int>::iterator it = crn.begin(); it != crn.end(); ++it) {
+            std::cout << *it << " ";
         }
         std::cout << "\n";
     }
