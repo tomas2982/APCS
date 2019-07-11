@@ -31,6 +31,9 @@ public:
     int getLevel(){
         return level;
     }
+    std::string getName(){
+        return name;
+    }
     std::string getInstructor(){
         return instructor;
     }

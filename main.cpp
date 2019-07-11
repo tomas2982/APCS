@@ -10,7 +10,7 @@
 
 
 int login();
-
+bool loggedIn = true;
 int main() {
     //list of students
     std::list<student> students;
@@ -19,7 +19,7 @@ int main() {
     int choice = 0;
     int x = 0;
     int loggedInCred = 0;
-    bool loggedIn = true;
+
     while (loggedIn) {
         loggedInCred = login();
 
@@ -203,15 +203,16 @@ int main() {
 				else if (in == 2) {
 
 					//prints courses and their rosters
+					int temp_crn;
 					for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-					//	temp_crn = it->crn;
-
-							for (std::list<student>::iterator i = students.begin(); i != students.end(); ++i) {
-						//		if (student->crn == temp_crn) {
-									i->print();
-							//	}
-								//i->print();
-							//std::cout << i;
+						temp_crn = it->getCrn();
+						for (std::list<student>::iterator i = students.begin(); i != students.end(); ++i) {
+                                std::list<int> temp_crn_list = i->getCrnList();
+						        for(std::list<int>::iterator j = temp_crn_list.begin(); j != temp_crn_list.end(); ++j){
+						            if( *j == temp_crn){
+						                std::cout << "Class: " << it->getName() << "Has student " << i->getName() << "\n";
+						            }
+						        }
 						}
 						std::cout << "\n-----------------\n";
 					}
@@ -234,7 +235,7 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        } else if (choice == 4) { break; }
+        } else if (choice == 4) {loggedIn = false; break; }
         else { std::cout << "Invalid Entry. Please try again\n"; }
     }
 }

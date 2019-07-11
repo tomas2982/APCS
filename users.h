@@ -47,7 +47,6 @@ public:
 
     ~student() {}
 
-
     void setMajor(std::string m) {
         major = m;
     }
@@ -56,7 +55,18 @@ public:
         crn.push_back(number);
 
     }
-
+    std::list<int> getCrnList(){
+        return crn;
+    }
+    int studentInCourse(int numbers){
+        for (std::list<int>::iterator t = crn.begin(); t != crn.end(); ++t){
+            if( *t == numbers){
+                return numbers;
+            }
+            else{
+                return 0;}
+        }
+    }
     void print() {
         std::cout << "Name: " + name + "\nMajor: " + major + "\nRegistered classes:";
         for (std::list<int>::iterator it = crn.begin(); it != crn.end(); ++it) {
