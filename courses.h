@@ -7,7 +7,7 @@
 
 class course{
 public:
-    std::string name, instructor;
+    std::string name, instructor,dayTime;
     int level;
     int crn;
     course() {}
@@ -15,6 +15,9 @@ public:
 
     void setName(std::string n){
         name = n;
+    }
+    void setdayTime(std::string dT){
+        dayTime = dT;
     }
     void setInstructor(std::string in){
         instructor = in;
@@ -37,8 +40,12 @@ public:
     std::string getInstructor(){
         return instructor;
     }
+    std::string getDayTime(){
+        return dayTime;
+    }
     void print(){
         std::cout << "Course name: " + name + "\nCrn: ";
+        std::cout << getDayTime();
         std::cout << getCrn();
         std::cout << "\nCourse Level: ";
         std::cout << getLevel();
