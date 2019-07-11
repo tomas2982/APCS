@@ -39,7 +39,8 @@ int main() {
                            "\nEnter 3 to add new course"
                            "\nEnter 4 to print courses"
                            "\nEnter 5 to remove course(s)"
-                           "\nEnter 6 to add instructor\n";
+                           "\nEnter 6 to add instructor"
+                           "\nEnter 7 to print instructors\n";
                 std::cin >> choice;
                 if (choice == 1) {
                     //add student
@@ -120,6 +121,19 @@ int main() {
                     }
                 }
                 else if(choice == 6){
+                    instructor inst;
+                    std::cout <<"Please Enter Name:\n";
+                    std::string nam;
+                    std::cin.ignore();
+                    std::getline(std::cin, nam);
+                    inst.setName(nam);
+                    instructors.push_back(inst);
+                }
+                else if (choice == 7){
+                    for(std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it){
+                        std::cout << it->getName() << "\n";
+                    }
+
                 }
                 else if (choice == 0) {
                     std::cout << "exiting\n";
