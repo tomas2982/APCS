@@ -1,0 +1,55 @@
+1 
+1
+12345
+Forrest Kelley
+Computers
+2
+1 2
+1
+54321
+Rachel Colon
+Computers
+3
+2 3 4
+1
+34234
+Tomas
+Computers engineering
+3
+3 4 5
+2
+3
+Computer Arch
+1
+1
+Rawlins
+3
+Circuits class
+1
+2
+prof zeman
+3
+Programming
+1
+3
+turing
+4
+0
+3
+2
+0
+1
+6
+Prof intelligent
+6
+Mr Brain
+6
+Benny
+6
+the professor
+7
+0
+3
+2
+0
+4
