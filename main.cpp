@@ -155,7 +155,6 @@ int main() {
             //Name of student should be assoc. with credentials.
             std::cout << "Please enter your ID number\n";
             int id_num;
-            std::string n = "";
             std::cin >> id_num;
             for (std::list<student>::iterator student_it = students.begin();
                  student_it != students.end(); ++student_it) {
