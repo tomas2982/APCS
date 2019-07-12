@@ -10,7 +10,9 @@
 
 
 int login();
+
 bool loggedIn = true;
+
 int main() {
     //list of students
     std::list<student> students;
@@ -45,8 +47,12 @@ int main() {
                 if (choice == 1) {
                     //add student
                     student stu;
-                    std::cout << "You wish to add a student\n"
-                                 "Please enter the name\n";
+                    std::cout << "You wish to add a student\n";
+                    std::cout << "Please enter ID Number\n";
+                    int id;
+                    std::cin >> id;
+                    stu.setId(id);
+                    std::cout << "Please enter the name\n";
                     //store input of name and later major
                     std::string n = "";
                     std::string m = "";
@@ -92,7 +98,7 @@ int main() {
                     std::cout << "Enter the CRN number for the course\n";
                     std::cin >> crn;
                     c.setCrn(crn);
-                    std::cout <<"Enter the instructor\n";
+                    std::cout << "Enter the instructor\n";
                     std::cin.ignore();
                     std::getline(std::cin, in);
                     c.setInstructor(in);
@@ -119,23 +125,20 @@ int main() {
                             }
                         }
                     }
-                }
-                else if(choice == 6){
+                } else if (choice == 6) {
                     instructor inst;
-                    std::cout <<"Please Enter Name:\n";
+                    std::cout << "Please Enter Name:\n";
                     std::string nam;
                     std::cin.ignore();
                     std::getline(std::cin, nam);
                     inst.setName(nam);
                     instructors.push_back(inst);
-                }
-                else if (choice == 7){
-                    for(std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it){
+                } else if (choice == 7) {
+                    for (std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it) {
                         std::cout << it->getName() << "\n";
                     }
 
-                }
-                else if (choice == 0) {
+                } else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
                 } else { std::cout << "Invalid input\n"; }
@@ -149,12 +152,12 @@ int main() {
             student stu;
             bool run = 1;
             int in = 0;
-			//Name of student should be assoc. with credentials.
-			std::cout <<"Please enter the name\n"; 
-			std::string n = "";
-			std::cin.ignore();
+            //Name of student should be assoc. with credentials.
+            std::cout << "Please enter the name\n";
+            std::string n = "";
+            std::cin.ignore();
             std::getline(std::cin, n);
-			stu.setName(n);
+            stu.setName(n);
             while (run) {
                 std::cout << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to logout\n";
                 std::cin >> in;
@@ -163,24 +166,22 @@ int main() {
                     std::cin >> x;
                     std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
                     int crns = 0;
-                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) 
-					{
-						if(it->getName()==n)//if name of iterator is set to input name
-						{
-							std::cin >> crns;
-							stu.setCrn(crns);
-						}//if
+                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+                        if (it->getName() == n)//if name of iterator is set to input name
+                        {
+                            std::cin >> crns;
+                            stu.setCrn(crns);
+                        }//if
                     }//for loop to go through list of students
                 }//if
                 else if (in == 2) {
                     //this prints for all students -> should just print the courses for the student
-                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) 
-					{
-						if(it->getName()==n)//if name of iterator is set to input name
-						{
-							it->print();
-							std::cout << "-----------------------\n";
-						}//if
+                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+                        if (it->getName() == n)//if name of iterator is set to input name
+                        {
+                            it->print();
+                            std::cout << "-----------------------\n";
+                        }//if
                     }
                 }//if
                 else if (in == 0) {
@@ -195,48 +196,44 @@ int main() {
              * menu for instructor
              */
         else if (loggedInCred == 3) {
-			bool run = 1;
-			while (run) {
-				std::cout << "\nEnter 0 to log out\nEnter 1 to display courses\nEnter 2 to display course rosters\n";
-				int in = 1;
-				std::cin >> in;
-				if (in == 0) {
-					std::cout << "Logging out\n";
-					break;
+            bool run = 1;
+            while (run) {
+                std::cout << "\nEnter 0 to log out\nEnter 1 to display courses\nEnter 2 to display course rosters\n";
+                int in = 1;
+                std::cin >> in;
+                if (in == 0) {
+                    std::cout << "Logging out\n";
+                    break;
 
-				}
-				else if (in == 1) {
-					//prints all courses
-					for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-						//find if course is for instructor
-						it->print();
-						std::cout << "\n-----------------\n";
-					}
+                } else if (in == 1) {
+                    //prints all courses
+                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
+                        //find if course is for instructor
+                        it->print();
+                        std::cout << "\n-----------------\n";
+                    }
 
-				}
-				else if (in == 2) {
+                } else if (in == 2) {
 
-					//prints courses and their rosters
-					int temp_crn;
-					for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-						temp_crn = it->getCrn();
-						for (std::list<student>::iterator i = students.begin(); i != students.end(); ++i) {
-                                std::list<int> temp_crn_list = i->getCrnList();
-						        for(std::list<int>::iterator j = temp_crn_list.begin(); j != temp_crn_list.end(); ++j){
-						            if( *j == temp_crn){
-						                std::cout << "Class: " << it->getName() << "Has student " << i->getName() << "\n";
-						            }
-						        }
-						}
-						std::cout << "\n-----------------\n";
-					}
-				}
-
-				else {
-					std::cout << "Invalid Input";
-				}
-			}
-		}
+                    //prints courses and their rosters
+                    int temp_crn;
+                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
+                        temp_crn = it->getCrn();
+                        for (std::list<student>::iterator i = students.begin(); i != students.end(); ++i) {
+                            std::list<int> temp_crn_list = i->getCrnList();
+                            for (std::list<int>::iterator j = temp_crn_list.begin(); j != temp_crn_list.end(); ++j) {
+                                if (*j == temp_crn) {
+                                    std::cout << "Class: " << it->getName() << "Has student " << i->getName() << "\n";
+                                }
+                            }
+                        }
+                        std::cout << "\n-----------------\n";
+                    }
+                } else {
+                    std::cout << "Invalid Input";
+                }
+            }
+        }
     }
     return 0;
 
@@ -249,7 +246,10 @@ int login() {
         std::cin >> choice;
         if (choice == 1 || choice == 2 || choice == 3) {
             return choice;
-        } else if (choice == 4) {loggedIn = false; break; }
+        } else if (choice == 4) {
+            loggedIn = false;
+            break;
+        }
         else { std::cout << "Invalid Entry. Please try again\n"; }
     }
 }

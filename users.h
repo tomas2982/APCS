@@ -68,7 +68,7 @@ public:
         }
     }
     void print() {
-        std::cout << "Name: " + name + "\nMajor: " + major + "\nRegistered classes:";
+        std::cout << "ID: " << getId() << "\n" << "Name: " + name + "\nMajor: " + major + "\nRegistered classes:";
         for (std::list<int>::iterator it = crn.begin(); it != crn.end(); ++it) {
             std::cout << *it << " ";
         }
