@@ -153,11 +153,12 @@ int main() {
             bool run = 1;
             int in = 0;
             //Name of student should be assoc. with credentials.
-            std::cout << "Please enter the name\n";
+            std::cout << "Please enter your ID number\n";
+            int id_num;
             std::string n = "";
-            std::cin.ignore();
-            std::getline(std::cin, n);
-            stu.setName(n);
+            std::cin >> id_num;
+            for (std::list<student>::iterator student_it = students.begin(); student_it != students.end(); ++ student_it){
+                if(student_it -> getId() == id_num){
             while (run) {
                 std::cout << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to logout\n";
                 std::cin >> in;
@@ -165,24 +166,16 @@ int main() {
                     std::cout << "Enter the number of courses to enter\n";
                     std::cin >> x;
                     std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
-                    int crns = 0;
-                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
-                        if (it->getName() == n)//if name of iterator is set to input name
-                        {
-                            std::cin >> crns;
-                            stu.setCrn(crns);
-                        }//if
-                    }//for loop to go through list of students
+                    int crn;
+                    for (int i = 0; i<x; i++){
+                        std::cin >> crn;
+                        student_it->setCrn(crn);
+                    }
                 }//if
                 else if (in == 2) {
-                    //this prints for all students -> should just print the courses for the student
-                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
-                        if (it->getName() == n)//if name of iterator is set to input name
-                        {
-                            it->print();
-                            std::cout << "-----------------------\n";
-                        }//if
-                    }
+                    std::cout << student_it->getName() <<" is registered for classes: ";
+                    student_it->printCourses();
+                    std::cout << "\n";
                 }//if
                 else if (in == 0) {
                     std::cout << "logging out\n";
@@ -190,7 +183,8 @@ int main() {
                 } else {
                     std::cout << "Invalid input\n";
                 }
-            }
+            }}
+            else{std::cout << "Student ID doesn't exist";}}
         }
             /**
              * menu for instructor

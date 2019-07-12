@@ -67,6 +67,11 @@ public:
                 return 0;}
         }
     }
+    void printCourses(){
+        for(std::list<int>::iterator crn_it = crn.begin(); crn_it != crn.end(); ++crn_it){
+            std::cout << *crn_it << " ";
+        }
+    }
     void print() {
         std::cout << "ID: " << getId() << "\n" << "Name: " + name + "\nMajor: " + major + "\nRegistered classes:";
         for (std::list<int>::iterator it = crn.begin(); it != crn.end(); ++it) {
