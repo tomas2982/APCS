@@ -13,7 +13,25 @@ int login();
 
 bool loggedIn = true;
 
-int main() {
+using namespace std;
+
+static int callback(void* data, int argc, char** argv, char** azColName)
+{ 				// number of things to print; query result to print; query column name;
+    int i;
+
+    for (i = 0; i < argc; i++) {
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+
+    printf("\n");
+    return 0;
+}
+
+int main(int argc, char** argv) {
+    sqlite3* DB;
+    int exit = 0;
+    char* messageError;
+    exit = sqlite3_open("assignment7.db", &DB);
     //list of students
     std::list<student> students;
     std::list<course> courses;
@@ -77,10 +95,16 @@ int main() {
 
                 } else if (choice == 2) {
                     //iterator of type student to access each objects print function
-                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
-                        it->print();
-                        std::cout << "-----------------------\n";
-                    }
+//                    for (std::list<student>::iterator it = students.begin(); it != students.end(); ++it) {
+//                        it->print();
+//                        std::cout << "-----------------------\n";
+//                    }
+                    //setting up a select/print query string
+                    string query = "SELECT * FROM STUDENT;";
+                    cout << endl << query << endl;
+
+                    // need the callback function this time
+                    sqlite3_exec(DB, query.c_str(), callback, NULL, NULL);
                 } else if (choice == 3) {//add course
                     course c;
                     std::cout << "You wish to enter a course\n"
