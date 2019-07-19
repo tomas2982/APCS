@@ -7,6 +7,7 @@
 
 #include "users.h"
 #include "courses.h"
+#include <sqlite3.h>
 
 
 int login();
