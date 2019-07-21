@@ -84,11 +84,11 @@ int main(int argc, char** argv) {
                     stu.setName(lname);
                     std::cout << "Please enter last name\n";
                     std::getline(std::cin,lname);
-                    std::cout << "Please enter major\n";
-                    std::getline(std::cin, major);
                     int gradYear;
                     std::cout << "Please enter grad year\n";
                     std::cin >> gradYear;
+                    std::cout << "Please enter major\n";
+                    std::getline(std::cin, major);
                     std::string email;
                     std::cout << "Please enter email\n";
                     std::getline(std::cin, email);
