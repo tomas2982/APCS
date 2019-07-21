@@ -61,7 +61,8 @@ int main(int argc, char** argv) {
                            "\nEnter 4 to print courses"
                            "\nEnter 5 to remove course(s)"
                            "\nEnter 6 to add instructor"
-                           "\nEnter 7 to print instructors\n";
+                           "\nEnter 7 to print instructors"
+                           "\nEnter 8 to print admins\n";
                 std::cin >> choice;
                 if (choice == 1) {
                     //add student
@@ -166,7 +167,13 @@ int main(int argc, char** argv) {
                     string query1 = "SELECT * FROM INSTRUCTOR;";
                     cout << endl << query1 << endl;
                     sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
-                } else if (choice == 0) {
+                }
+                else if (choice == 8){
+                    string query1 = "SELECT * FROM ADMIN;";
+                    cout << endl << query1 << endl;
+                    sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
+                }
+                else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
                 } else { std::cout << "Invalid input\n"; }
