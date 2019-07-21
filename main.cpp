@@ -103,8 +103,6 @@ int main(int argc, char** argv) {
                     //setting up a select/print query string
                     string query = "SELECT * FROM STUDENT;";
                     cout << endl << query << endl;
-
-                    // need the callback function this time
                     sqlite3_exec(DB, query.c_str(), callback, NULL, NULL);
                 } else if (choice == 3) {//add course
                     course c;
@@ -130,10 +128,13 @@ int main(int argc, char** argv) {
                     courses.push_back(c);
 
                 } else if (choice == 4) {
-                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
-                        it->print();
-                        std::cout << "\n-----------------\n";
-                    }
+//                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
+//                        it->print();
+//                        std::cout << "\n-----------------\n";
+//                    }
+                    string query = "SELECT * FROM COURSE;";
+                    cout << endl << query << endl;
+                    sqlite3_exec(DB, query.c_str(), callback, NULL, NULL);
                 } else if (choice == 5) {
                     if (courses.size() == 0) { std::cout << "The course list is already empty\n"; }
                     else {
@@ -159,10 +160,12 @@ int main(int argc, char** argv) {
                     inst.setName(nam);
                     instructors.push_back(inst);
                 } else if (choice == 7) {
-                    for (std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it) {
-                        std::cout << it->getName() << "\n";
-                    }
-
+//                    for (std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it) {
+//                        std::cout << it->getName() << "\n";
+//                    }
+                    string query1 = "SELECT * FROM INSTRUCTOR;";
+                    cout << endl << query1 << endl;
+                    sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
                 } else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
