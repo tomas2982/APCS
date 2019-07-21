@@ -113,6 +113,7 @@ int main(int argc, char **argv) {
                     std::stringstream ss;
                     ss << id;
                     idToString = ss.str();
+                    ss.str(std::string());
                     ss << gradYear;
                     gradYearString = ss.str();
                     string userInput("INSERT INTO STUDENT VALUES(" + idToString + ",'" + fname + "','" + lname + "'," +
