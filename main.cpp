@@ -72,28 +72,43 @@ int main(int argc, char** argv) {
                     int id;
                     std::cin >> id;
                     stu.setId(id);
-                    std::cout << "Please enter the name\n";
+                    std::cout << "Please enter the first name\n";
                     //store input of name and later major
-                    std::string n = "";
-                    std::string m = "";
+                    std::string fname = "";
+                    std::string lname = "";
+                    std::string major = "";
                     //cin.ignore() needed for the cin to get the correct user input
                     std::cin.ignore();
-                    std::getline(std::cin, n);
-                    stu.setName(n);
+                    std::getline(std::cin, fname);
+                    stu.setName(lname);
+                    std::cout << "Please enter last name\n";
+                    std::getline(std::cin,lname);
                     std::cout << "Please enter major\n";
-                    std::getline(std::cin, m);
-                    stu.setMajor(m);
+                    std::getline(std::cin, major);
+                    int gradYear;
+                    std::cout << "Please enter grad year\n";
+                    std::cin >> gradYear;
+                    std::string email;
+                    std::cout << "Please enter email\n";
+                    std::getline(std::cin, email);
+                    //stu.setMajor(m);
                     //number of courses to initially enter
-                    std::cout << "Enter the number of courses to enter\n";
-                    std::cin >> x;
-                    std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
-                    int crns = 0;
-                    for (int i = 0; i < x; i++) {
-                        std::cin >> crns;
-                        stu.setCrn(crns);
-                    }
-                    //add student to list
-                    students.push_back(stu);
+//                    std::cout << "Enter the number of courses to enter\n";
+//                    std::cin >> x;
+//                    std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
+//                    int crns = 0;
+//                    for (int i = 0; i < x; i++) {
+//                        std::cin >> crns;
+//                        stu.setCrn(crns);
+//                    }
+//                    //add student to list
+                   // students.push_back(stu);
+                   std::string idToString = std::to_string(id);
+                   std::string gradYearString = std::to_string(gradYear);
+                    string userInput("INSERT INTO STUDENT VALUES(" + idToString + ",'" + fname + "','" + lname + "'," + gradYearString+",'"+ email +"'"");");
+
+                    exit = sqlite3_exec(DB, userInput.c_str(), callback, NULL, NULL);
+
 
                 } else if (choice == 2) {
                     //iterator of type student to access each objects print function
