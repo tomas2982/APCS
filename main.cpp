@@ -103,8 +103,13 @@ int main(int argc, char** argv) {
 //                    }
 //                    //add student to list
                    // students.push_back(stu);
-                   std::string idToString = std::to_string(id);
-                   std::string gradYearString = std::to_string(gradYear);
+                   std::string idToString = "";
+                   std::string gradYearString = "";
+                   std::stringstream ss;
+                   ss << id;
+                   idToString = ss.str();
+                   ss << gradYear;
+                   gradYearString = ss.str();
                     string userInput("INSERT INTO STUDENT VALUES(" + idToString + ",'" + fname + "','" + lname + "'," + gradYearString+",'"+ email +"'"");");
 
                     exit = sqlite3_exec(DB, userInput.c_str(), callback, NULL, NULL);
