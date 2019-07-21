@@ -72,24 +72,28 @@ int main(int argc, char** argv) {
                     std::cout << "Please enter ID Number\n";
                     int id;
                     std::cin >> id;
-                    stu.setId(id);
+                   // stu.setId(id);
                     std::cout << "Please enter the first name\n";
                     //store input of name and later major
                     std::string fname = "";
                     std::string lname = "";
                     std::string major = "";
+                    std::string email;
+                    int gradYear;
                     //cin.ignore() needed for the cin to get the correct user input
                     std::cin.ignore();
                     std::getline(std::cin, fname);
-                    stu.setName(lname);
+                   // stu.setName(lname);
                     std::cout << "Please enter last name\n";
                     std::getline(std::cin,lname);
-                    int gradYear;
+
                     std::cout << "Please enter grad year\n";
                     std::cin >> gradYear;
+
                     std::cout << "Please enter major\n";
                     std::getline(std::cin, major);
-                    std::string email;
+
+
                     std::cout << "Please enter email\n";
                     std::getline(std::cin, email);
                     //stu.setMajor(m);
