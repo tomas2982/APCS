@@ -17,8 +17,8 @@ bool loggedIn = true;
 
 using namespace std;
 
-static int callback(void* data, int argc, char** argv, char** azColName)
-{ 				// number of things to print; query result to print; query column name;
+static int callback(void *data, int argc, char **argv,
+                    char **azColName) {                // number of things to print; query result to print; query column name;
     int i;
 
     for (i = 0; i < argc; i++) {
@@ -29,10 +29,10 @@ static int callback(void* data, int argc, char** argv, char** azColName)
     return 0;
 }
 
-int main(int argc, char** argv) {
-    sqlite3* DB;
+int main(int argc, char **argv) {
+    sqlite3 *DB;
     int exit = 0;
-    char* messageError;
+    char *messageError;
     exit = sqlite3_open("assignment7.db", &DB);
     //list of students
     std::list<student> students;
@@ -72,23 +72,23 @@ int main(int argc, char** argv) {
                     std::cout << "Please enter ID Number\n";
                     int id;
                     std::cin >> id;
-                   // stu.setId(id);
+                    // stu.setId(id);
                     std::cout << "Please enter the first name\n";
                     //store input of name and later major
-                    std::string fname = "";
-                    std::string lname = "";
-                    std::string major = "";
+                    std::string fname;
+                    std::string lname;
+                    std::string major;
                     std::string email;
-                    int gradYear;
+                    int gradYear = 0;
                     //cin.ignore() needed for the cin to get the correct user input
                     std::cin.ignore();
                     std::getline(std::cin, fname);
-                   // stu.setName(lname);
+
                     std::cout << "Please enter last name\n";
-                    std::getline(std::cin,lname);
+                    std::getline(std::cin, lname);
 
                     std::cout << "Please enter grad year\n";
-                    std::cin >> gradYear;
+                    std::getline(std::cin, gradYear);
 
                     std::cout << "Please enter major\n";
                     std::getline(std::cin, major);
@@ -107,15 +107,17 @@ int main(int argc, char** argv) {
 //                        stu.setCrn(crns);
 //                    }
 //                    //add student to list
-                   // students.push_back(stu);
-                   std::string idToString = "";
-                   std::string gradYearString = "";
-                   std::stringstream ss;
-                   ss << id;
-                   idToString = ss.str();
-                   ss << gradYear;
-                   gradYearString = ss.str();
-                    string userInput("INSERT INTO STUDENT VALUES(" + idToString + ",'" + fname + "','" + lname + "'," + gradYearString+",'"+ email +"'"");");
+                    // students.push_back(stu);
+                    std::string idToString = "";
+                    std::string gradYearString = "";
+                    std::stringstream ss;
+                    ss << id;
+                    idToString = ss.str();
+                    ss << gradYear;
+                    gradYearString = ss.str();
+                    string userInput("INSERT INTO STUDENT VALUES(" + idToString + ",'" + fname + "','" + lname + "'," +
+                                     gradYearString + ",'" + email + "'"");");
+                    std::cout << userInput << std::endl;
 
                     exit = sqlite3_exec(DB, userInput.c_str(), callback, NULL, NULL);
 
@@ -192,13 +194,11 @@ int main(int argc, char** argv) {
                     string query1 = "SELECT * FROM INSTRUCTOR;";
                     cout << endl << query1 << endl;
                     sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
-                }
-                else if (choice == 8){
+                } else if (choice == 8) {
                     string query1 = "SELECT * FROM ADMIN;";
                     cout << endl << query1 << endl;
                     sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
-                }
-                else if (choice == 0) {
+                } else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
                 } else { std::cout << "Invalid input\n"; }
