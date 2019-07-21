@@ -79,7 +79,7 @@ int main(int argc, char **argv) {
                     std::string lname;
                     std::string major;
                     std::string email;
-                    int gradYear = 0;
+                    std::string gradYear;
                     //cin.ignore() needed for the cin to get the correct user input
                     std::cin.ignore();
                     std::getline(std::cin, fname);
