@@ -117,7 +117,7 @@ int main(int argc, char **argv) {
                     ss << gradYear;
                     gradYearString = ss.str();
                     string userInput("INSERT INTO STUDENT VALUES(" + idToString + ",'" + fname + "','" + lname + "'," +
-                                     gradYearString + ",'" + email + "'"");");
+                                     gradYearString + ",'" + major + "','" + email + "'"");");
                     std::cout << userInput << std::endl;
 
                     exit = sqlite3_exec(DB, userInput.c_str(), callback, NULL, NULL);
