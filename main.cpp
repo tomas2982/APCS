@@ -193,8 +193,8 @@ int main(int argc, char **argv) {
 //                    instructors.push_back(inst);
                     int instructorId, instructorHireYear;
                     std::string instructorFname, instructorLname, instructorTitle, instructorEmail, instructorDept;
-                    //std::cout << "Please enter the instructor ID\n";
-                   // cin >> instructorId;
+                    std::cout << "Please enter the instructor ID\n";
+                    cin >> instructorId;
                     std::cout << "Please enter the instructor first name\n";
                     std::cin >> instructorFname;
                     std::cout << "Please enter the instructor last name\n";
@@ -209,18 +209,18 @@ int main(int argc, char **argv) {
                     std::cout << "Please enter the instructor email\n";
                     std::cin >> instructorEmail;
 
-//                    std::string instructorIdToString = "";
+                    std::string instructorIdToString = "";
 //                    std::string instructorYearString = "";
-//                    std::stringstream sis;
+                    std::stringstream ss;
 //                    //sis.str(std::string());
-//                    sis << instructorIdToString;
-//                    instructorIdToString = sis.str();
+                    ss << instructorIdToString;
+                    instructorIdToString = ss.str();
 //                    //sis.str(std::string());
 //                    sis << instructorYearString;
 //                    instructorYearString = sis.str();
 
                     string insertInstructor =
-                            "INSERT INTO INSTRUCTOR VALUES(20006 ,'" + instructorFname + "','" +
+                            "INSERT INTO INSTRUCTOR VALUES(" + instructorIdToString + ",'" + instructorFname + "','" +
                             instructorLname + "','" +
                             instructorTitle + "',2000,'" + instructorDept + "','" +
                             instructorEmail + "');";
