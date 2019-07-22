@@ -211,12 +211,12 @@ int main(int argc, char **argv) {
 
                     std::string instructorIdToString = "";
                     std::string instructorYearString = "";
-                    std::stringstream ss;
-                    ss << instructorIdToString;
-                    instructorIdToString = ss.str();
-                    ss.str(std::string());
-                    ss << instructorYearString;
-                    instructorYearString = ss.str();
+                    std::stringstream sis;
+                    sis << instructorIdToString;
+                    instructorIdToString = sis.str();
+                    sis.str(std::string());
+                    sis << instructorYearString;
+                    instructorYearString = sis.str();
 
                     string insertInstructor =
                             "INSERT INTO STUDENT VALUES(" + instructorIdToString + ",'" + instructorFname + "','" +
