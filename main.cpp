@@ -202,7 +202,15 @@ int main(int argc, char **argv) {
                     sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
                 }
                 else if (choice == 9){
+                    std::cout << "Please enter student CRN to remove\n";
+                    int crnIn;
+                    std::cin >> crnIn;
+                    std::string crnToString;
+                    std::stringstream ss;
+                    ss << crnIn;
+                    crnToString = ss.str();
 
+                    string deleteStudent = "DELETE FROM STUDENTS WHERE CRN =" + crnToString + " ;";
                 }
                 else if (choice == 0) {
                     std::cout << "exiting\n";
