@@ -127,8 +127,7 @@ int main(int argc, char **argv) {
                     if (exit != SQLITE_OK) {
                         std::cerr << "Error Insert" << std::endl;
                         sqlite3_free(messageError);
-                    }
-                    else
+                    } else
                         std::cout << "Records created Successfully!" << std::endl;
 
                 } else if (choice == 2) {
@@ -174,7 +173,7 @@ int main(int argc, char **argv) {
                     sqlite3_exec(DB, query.c_str(), callback, NULL, NULL);
                 } else if (choice == 5) {
                     int crnIn;
-                    std::cout <<"Please enter course crn to remove";
+                    std::cout << "Please enter course crn to remove";
                     std::cin >> crnIn;
                     std::string crnToString;
                     std::stringstream ss;
@@ -193,7 +192,7 @@ int main(int argc, char **argv) {
 //                    inst.setName(nam);
 //                    instructors.push_back(inst);
                     int instructorId, instructorHireYear;
-                    std::string  instructorFname, instructorLname, instructorTitle, instructorEmail, instructorDept;
+                    std::string instructorFname, instructorLname, instructorTitle, instructorEmail, instructorDept;
                     std::cout << "Please enter the instructor ID\n";
                     cin >> instructorId;
                     std::cout << "Please enter the instructor first name\n";
@@ -201,7 +200,7 @@ int main(int argc, char **argv) {
                     std::cout << "Please enter the instructor last name\n";
                     cin >> instructorLname;
                     std::cout << "Please enter the instructor Title\n";
-                    cin >> instructorTitle;
+                    std::getline(std::cin, instructorTitle);
                     std::cout << "Please enter the instructor hire year\n";
                     cin >> instructorHireYear;
                     std::cout << "Please enter the instructor dept\n";
@@ -218,8 +217,11 @@ int main(int argc, char **argv) {
                     ss << instructorYearString;
                     instructorYearString = ss.str();
 
-                    string insertInstructor = "INSERT INTO STUDENT VALUES(" + instructorIdToString + ",'" + instructorFname + "','" + instructorLname + "'," +
-                                              instructorTitle + ",'" + instructorYearString + "','" + instructorDept + "','"+ instructorEmail + "';);";
+                    string insertInstructor =
+                            "INSERT INTO STUDENT VALUES(" + instructorIdToString + ",'" + instructorFname + "','" +
+                            instructorLname + "','" +
+                            instructorTitle + "'," + instructorYearString + ",'" + instructorDept + "','" +
+                            instructorEmail + "';);";
                     cout << insertInstructor << endl;
 
                     exit = sqlite3_exec(DB, insertInstructor.c_str(), callback, NULL, NULL);
@@ -227,10 +229,8 @@ int main(int argc, char **argv) {
                     if (exit != SQLITE_OK) {
                         std::cerr << "Error Insert" << std::endl;
                         sqlite3_free(messageError);
-                    }
-                    else
+                    } else
                         std::cout << "Records created Successfully!" << std::endl;
-
 
 
                 } else if (choice == 7) {
@@ -244,8 +244,7 @@ int main(int argc, char **argv) {
                     string query1 = "SELECT * FROM ADMIN;";
                     cout << endl << query1 << endl;
                     sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
-                }
-                else if (choice == 9){
+                } else if (choice == 9) {
                     std::cout << "Please enter student ID to remove\n";
                     int IdIn;
                     std::cin >> IdIn;
@@ -258,16 +257,14 @@ int main(int argc, char **argv) {
                     cout << endl << deleteStudent << endl;
                     sqlite3_exec(DB, deleteStudent.c_str(), callback, NULL, NULL);
 
-                }
-                else if (choice == 10){
-                 //   std::cout << "Please enter Dept. to find instructor availabilty for classes\n";
+                } else if (choice == 10) {
+                    //   std::cout << "Please enter Dept. to find instructor availabilty for classes\n";
 //                    std::string deptIn;
 //                    cin >> deptIn;
                     string instructorMatch = "SELECT INSTRUCTOR.NAME, INSTRUCTOR.SURNAME, COURSENAME FROM INSTRUCTOR, COURSE WHERE DEPT = DEPARTMENT;";
                     cout << endl << instructorMatch << endl;
                     sqlite3_exec(DB, instructorMatch.c_str(), callback, NULL, NULL);
-                }
-                else if (choice == 0) {
+                } else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
                 } else { std::cout << "Invalid input\n"; }
