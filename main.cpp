@@ -211,6 +211,9 @@ int main(int argc, char **argv) {
                     crnToString = ss.str();
 
                     string deleteStudent = "DELETE FROM STUDENTS WHERE CRN =" + crnToString + " ;";
+                    cout << endl << deleteStudent << endl;
+                    sqlite3_exec(DB, deleteStudent.c_str(), callback, NULL, NULL);
+
                 }
                 else if (choice == 0) {
                     std::cout << "exiting\n";
