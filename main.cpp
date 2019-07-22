@@ -32,7 +32,7 @@ static int callback(void *data, int argc, char **argv,
 int main(int argc, char **argv) {
     sqlite3 *DB;
     int exit = 0;
-    char *messageError;
+    char* messageError;
     exit = sqlite3_open("assignment7.db", &DB);
     //list of students
     std::list<student> students;
@@ -196,18 +196,18 @@ int main(int argc, char **argv) {
                     //std::cout << "Please enter the instructor ID\n";
                    // cin >> instructorId;
                     std::cout << "Please enter the instructor first name\n";
-                    cin >> instructorFname;
+                    std::cin >> instructorFname;
                     std::cout << "Please enter the instructor last name\n";
-                    cin >> instructorLname;
+                    std::cin >> instructorLname;
                     std::cout << "Please enter the instructor Title\n";
                     std::cin.ignore();
                     std::getline(std::cin, instructorTitle);
                     //std::cout << "Please enter the instructor hire year\n";
                     //cin >> instructorHireYear;
                     std::cout << "Please enter the instructor dept\n";
-                    cin >> instructorDept;
+                    std::cin >> instructorDept;
                     std::cout << "Please enter the instructor email\n";
-                    cin >> instructorEmail;
+                    std::cin >> instructorEmail;
 
 //                    std::string instructorIdToString = "";
 //                    std::string instructorYearString = "";
@@ -223,7 +223,7 @@ int main(int argc, char **argv) {
                             "INSERT INTO INSTRUCTOR VALUES(20006 ,'" + instructorFname + "','" +
                             instructorLname + "','" +
                             instructorTitle + "',2000,'" + instructorDept + "','" +
-                            instructorEmail + "';);";
+                            instructorEmail + "');";
                     cout << insertInstructor << endl;
 
                     exit = sqlite3_exec(DB, insertInstructor.c_str(), callback, NULL, NULL);
