@@ -214,10 +214,10 @@ int main(int argc, char **argv) {
 
                 }
                 else if (choice == 10){
-                    std::cout << "Please enter Dept. to find instructor availabilty for classes\n";
+                 //   std::cout << "Please enter Dept. to find instructor availabilty for classes\n";
 //                    std::string deptIn;
 //                    cin >> deptIn;
-                    string instructorMatch = "SELECT INSTRUCTOR.NAME, INSTRUCTOR.SURNAME FROM INSTRUCTOR, COURSE WHERE DEPT = DEPARTMENT;";
+                    string instructorMatch = "SELECT INSTRUCTOR.NAME, INSTRUCTOR.SURNAME, COURSENAME FROM INSTRUCTOR, COURSE WHERE DEPT = DEPARTMENT;";
                     cout << endl << instructorMatch << endl;
                     sqlite3_exec(DB, instructorMatch.c_str(), callback, NULL, NULL);
                 }
