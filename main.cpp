@@ -212,10 +212,10 @@ int main(int argc, char **argv) {
                     std::string instructorIdToString = "";
                     std::string instructorYearString = "";
                     std::stringstream sis;
-                    sis.str(std::string());
+                    //sis.str(std::string());
                     sis << instructorIdToString;
                     instructorIdToString = sis.str();
-                    sis.str(std::string());
+                    //sis.str(std::string());
                     sis << instructorYearString;
                     instructorYearString = sis.str();
 
