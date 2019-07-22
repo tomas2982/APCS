@@ -124,6 +124,12 @@ int main(int argc, char **argv) {
 
                     exit = sqlite3_exec(DB, userInput.c_str(), callback, NULL, NULL);
 
+                    if (exit != SQLITE_OK) {
+                        std::cerr << "Error Insert" << std::endl;
+                        sqlite3_free(messageError);
+                    }
+                    else
+                        std::cout << "Records created Successfully!" << std::endl;
 
                 } else if (choice == 2) {
                     //iterator of type student to access each objects print function
@@ -186,6 +192,46 @@ int main(int argc, char **argv) {
 //                    std::getline(std::cin, nam);
 //                    inst.setName(nam);
 //                    instructors.push_back(inst);
+                    int instructorId, instructorHireYear;
+                    std::string  instructorFname, instructorLname, instructorTitle, instructorEmail, instructorDept;
+                    std::cout << "Please enter the instructor ID\n";
+                    cin >> instructorId;
+                    std::cout << "Please enter the instructor first name\n";
+                    cin >> instructorFname;
+                    std::cout << "Please enter the instructor last name\n";
+                    cin >> instructorLname;
+                    std::cout << "Please enter the instructor Title\n";
+                    cin >> instructorTitle;
+                    std::cout << "Please enter the instructor hire year\n";
+                    cin >> instructorHireYear;
+                    std::cout << "Please enter the instructor dept\n";
+                    cin >> instructorDept;
+                    std::cout << "Please enter the instructor email\n";
+                    cin >> instructorEmail;
+
+                    std::string instructorIdToString = "";
+                    std::string instructorYearString = "";
+                    std::stringstream ss;
+                    ss << instructorIdToString;
+                    instructorIdToString = ss.str();
+                    ss.str(std::string());
+                    ss << instructorYearString;
+                    instructorYearString = ss.str();
+
+                    string insertInstructor = "INSERT INTO STUDENT VALUES(" + instructorIdToString + ",'" + instructorFname + "','" + instructorLname + "'," +
+                                              instructorTitle + ",'" + instructorYearString + "','" + instructorDept + "','"+ instructorEmail + "';);";
+                    cout << insertInstructor << endl;
+
+                    exit = sqlite3_exec(DB, insertInstructor.c_str(), callback, NULL, NULL);
+
+                    if (exit != SQLITE_OK) {
+                        std::cerr << "Error Insert" << std::endl;
+                        sqlite3_free(messageError);
+                    }
+                    else
+                        std::cout << "Records created Successfully!" << std::endl;
+
+
 
                 } else if (choice == 7) {
 //                    for (std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it) {
