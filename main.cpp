@@ -210,7 +210,7 @@ int main(int argc, char **argv) {
                     ss << crnIn;
                     crnToString = ss.str();
 
-                    string deleteStudent = "DELETE FROM STUDENTS WHERE CRN =" + crnToString + " ;";
+                    string deleteStudent = "DELETE FROM STUDENTS WHERE CRN = " + crnToString + " ;";
                     cout << endl << deleteStudent << endl;
                     sqlite3_exec(DB, deleteStudent.c_str(), callback, NULL, NULL);
 
