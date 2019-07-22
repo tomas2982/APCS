@@ -202,15 +202,15 @@ int main(int argc, char **argv) {
                     sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
                 }
                 else if (choice == 9){
-                    std::cout << "Please enter student CRN to remove\n";
-                    int crnIn;
-                    std::cin >> crnIn;
-                    std::string crnToString;
+                    std::cout << "Please enter student ID to remove\n";
+                    int IdIn;
+                    std::cin >> IdIn;
+                    std::string idToString;
                     std::stringstream ss;
-                    ss << crnIn;
-                    crnToString = ss.str();
+                    ss << IdIn;
+                    idToString = ss.str();
 
-                    string deleteStudent = "DELETE FROM STUDENT WHERE CRN = " + crnToString + ";";
+                    string deleteStudent = "DELETE FROM STUDENT WHERE CRN = " + idToString + ";";
                     cout << endl << deleteStudent << endl;
                     sqlite3_exec(DB, deleteStudent.c_str(), callback, NULL, NULL);
 
