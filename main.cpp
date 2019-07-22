@@ -168,7 +168,7 @@ int main(int argc, char **argv) {
                     sqlite3_exec(DB, query.c_str(), callback, NULL, NULL);
                 } else if (choice == 5) {
                     int crnIn;
-                    std::cout <<"Please enter course crn to remove"
+                    std::cout <<"Please enter course crn to remove";
                     std::cin >> crnIn;
                     std::string crnToString;
                     std::stringstream ss;
