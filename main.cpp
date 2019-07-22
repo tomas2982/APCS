@@ -64,7 +64,8 @@ int main(int argc, char **argv) {
                            "\nEnter 6 to add instructor"
                            "\nEnter 7 to print instructors"
                            "\nEnter 8 to print admins"
-                           "\nEnter 9 to delete a student\n";
+                           "\nEnter 9 to delete a student"
+                           "\nEnter 10 to see which instructors can teach which class\n";
                 std::cin >> choice;
                 if (choice == 1) {
                     //add student
@@ -166,29 +167,26 @@ int main(int argc, char **argv) {
                     cout << endl << query << endl;
                     sqlite3_exec(DB, query.c_str(), callback, NULL, NULL);
                 } else if (choice == 5) {
-                    if (courses.size() == 0) { std::cout << "The course list is already empty\n"; }
-                    else {
-                        std::cout << "You wish to remove a course\nPlease enter CRN number for course\n";
-                        int num = 0;
-                        std::cin >> num;
-                        std::list<course>::iterator it2 = courses.end();
-                        for (std::list<course>::iterator it = courses.begin(); it != it2; ++it) {
-                            if (it->getCrn() == num) {
-                                courses.erase(it);
-                                //reset head and tail
-                                it = courses.begin();
-                                it2 = courses.end();
-                            }
-                        }
-                    }
+                    int crnIn;
+                    std::cout <<"Please enter course crn to remove"
+                    std::cin >> crnIn;
+                    std::string crnToString;
+                    std::stringstream ss;
+                    ss << crnIn;
+                    crnToString = ss.str();
+
+                    string deleteCourse = "DELETE FROM COURSE WHERE CRN = " + crnToString + ";";
+                    cout << endl << deleteCourse << endl;
+                    sqlite3_exec(DB, deleteCourse.c_str(), callback, NULL, NULL);
                 } else if (choice == 6) {
-                    instructor inst;
-                    std::cout << "Please Enter Name:\n";
-                    std::string nam;
-                    std::cin.ignore();
-                    std::getline(std::cin, nam);
-                    inst.setName(nam);
-                    instructors.push_back(inst);
+//                    instructor inst;
+//                    std::cout << "Please Enter Name:\n";
+//                    std::string nam;
+//                    std::cin.ignore();
+//                    std::getline(std::cin, nam);
+//                    inst.setName(nam);
+//                    instructors.push_back(inst);
+
                 } else if (choice == 7) {
 //                    for (std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it) {
 //                        std::cout << it->getName() << "\n";
@@ -214,6 +212,14 @@ int main(int argc, char **argv) {
                     cout << endl << deleteStudent << endl;
                     sqlite3_exec(DB, deleteStudent.c_str(), callback, NULL, NULL);
 
+                }
+                else if (choice == 10){
+                    std::cout << "Please enter Dept. to find instructor availabilty for classes\n";
+//                    std::string deptIn;
+//                    cin >> deptIn;
+                    string instructorMatch = "SELECT INSTRUCTOR.NAME, INSTRUCTOR.SURNAME FROM INSTRUCTOR, COURSE WHERE DEPT = DEPARTMENT;";
+                    cout << endl << instructorMatch << endl;
+                    sqlite3_exec(DB, instructorMatch.c_str(), callback, NULL, NULL);
                 }
                 else if (choice == 0) {
                     std::cout << "exiting\n";
