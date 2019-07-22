@@ -194,7 +194,7 @@ int main(int argc, char **argv) {
                     int instructorId, instructorHireYear;
                     std::string instructorFname, instructorLname, instructorTitle, instructorEmail, instructorDept;
                     std::cout << "Please enter the instructor ID\n";
-                    cin >> instructorId;
+                   // cin >> instructorId;
                     std::cout << "Please enter the instructor first name\n";
                     cin >> instructorFname;
                     std::cout << "Please enter the instructor last name\n";
@@ -203,7 +203,7 @@ int main(int argc, char **argv) {
                     std::cin.ignore();
                     std::getline(std::cin, instructorTitle);
                     std::cout << "Please enter the instructor hire year\n";
-                    cin >> instructorHireYear;
+                    //cin >> instructorHireYear;
                     std::cout << "Please enter the instructor dept\n";
                     cin >> instructorDept;
                     std::cout << "Please enter the instructor email\n";
