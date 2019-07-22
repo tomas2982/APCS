@@ -220,9 +220,9 @@ int main(int argc, char **argv) {
                     instructorYearString = sis.str();
 
                     string insertInstructor =
-                            "INSERT INTO STUDENT VALUES(" + instructorIdToString + ",'" + instructorFname + "','" +
+                            "INSERT INTO STUDENT VALUES(20006 ,'" + instructorFname + "','" +
                             instructorLname + "','" +
-                            instructorTitle + "'," + instructorYearString + ",'" + instructorDept + "','" +
+                            instructorTitle + "',2000,'" + instructorDept + "','" +
                             instructorEmail + "';);";
                     cout << insertInstructor << endl;
 
