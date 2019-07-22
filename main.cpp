@@ -200,6 +200,7 @@ int main(int argc, char **argv) {
                     std::cout << "Please enter the instructor last name\n";
                     cin >> instructorLname;
                     std::cout << "Please enter the instructor Title\n";
+                    std::cin.ignore();
                     std::getline(std::cin, instructorTitle);
                     std::cout << "Please enter the instructor hire year\n";
                     cin >> instructorHireYear;
