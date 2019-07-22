@@ -193,7 +193,7 @@ int main(int argc, char **argv) {
 //                    instructors.push_back(inst);
                     int instructorId, instructorHireYear;
                     std::string instructorFname, instructorLname, instructorTitle, instructorEmail, instructorDept;
-                    std::cout << "Please enter the instructor ID\n";
+                    //std::cout << "Please enter the instructor ID\n";
                    // cin >> instructorId;
                     std::cout << "Please enter the instructor first name\n";
                     cin >> instructorFname;
@@ -202,25 +202,25 @@ int main(int argc, char **argv) {
                     std::cout << "Please enter the instructor Title\n";
                     std::cin.ignore();
                     std::getline(std::cin, instructorTitle);
-                    std::cout << "Please enter the instructor hire year\n";
+                    //std::cout << "Please enter the instructor hire year\n";
                     //cin >> instructorHireYear;
                     std::cout << "Please enter the instructor dept\n";
                     cin >> instructorDept;
                     std::cout << "Please enter the instructor email\n";
                     cin >> instructorEmail;
 
-                    std::string instructorIdToString = "";
-                    std::string instructorYearString = "";
-                    std::stringstream sis;
-                    //sis.str(std::string());
-                    sis << instructorIdToString;
-                    instructorIdToString = sis.str();
-                    //sis.str(std::string());
-                    sis << instructorYearString;
-                    instructorYearString = sis.str();
+//                    std::string instructorIdToString = "";
+//                    std::string instructorYearString = "";
+//                    std::stringstream sis;
+//                    //sis.str(std::string());
+//                    sis << instructorIdToString;
+//                    instructorIdToString = sis.str();
+//                    //sis.str(std::string());
+//                    sis << instructorYearString;
+//                    instructorYearString = sis.str();
 
                     string insertInstructor =
-                            "INSERT INTO STUDENT VALUES(20006 ,'" + instructorFname + "','" +
+                            "INSERT INTO INSTRUCTOR VALUES(20006 ,'" + instructorFname + "','" +
                             instructorLname + "','" +
                             instructorTitle + "',2000,'" + instructorDept + "','" +
                             instructorEmail + "';);";
