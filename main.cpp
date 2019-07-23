@@ -239,9 +239,17 @@ int main(int argc, char **argv) {
 //                    for (std::list<instructor>::iterator it = instructors.begin(); it != instructors.end(); ++it) {
 //                        std::cout << it->getName() << "\n";
 //                    }
-                    string query1 = "SELECT * FROM INSTRUCTOR;";
-                    cout << endl << query1 << endl;
-                    sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
+                    if(argc==0)
+                    {
+                        std::cout<<"There are no instructors that can teach this course\n";
+                    }
+                    else
+                    {
+                        string query1 = "SELECT * FROM INSTRUCTOR;";
+                        cout << endl << query1 << endl;
+                        sqlite3_exec(DB, query1.c_str(), callback, NULL, NULL);
+                    }
+
                 } else if (choice == 8) {
                     string query1 = "SELECT * FROM ADMIN;";
                     cout << endl << query1 << endl;
