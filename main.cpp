@@ -271,9 +271,14 @@ int main(int argc, char **argv) {
                     //   std::cout << "Please enter Dept. to find instructor availabilty for classes\n";
 //                    std::string deptIn;
 //                    cin >> deptIn;
+                    if(argc==0)
+                    {
+                        std::cout<<"There are no instructors that can teach this course\n";
+                    }
+                    else{
                     string instructorMatch = "SELECT INSTRUCTOR.NAME, INSTRUCTOR.SURNAME, COURSENAME FROM INSTRUCTOR, COURSE WHERE DEPT = DEPARTMENT;";
                     cout << endl << instructorMatch << endl;
-                    sqlite3_exec(DB, instructorMatch.c_str(), callback, NULL, NULL);
+                    sqlite3_exec(DB, instructorMatch.c_str(), callback, NULL, NULL);}
                 } else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
