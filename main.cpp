@@ -162,7 +162,7 @@ int main(int argc, char **argv) {
 //                    std::getline(std::cin, in);
 //                    c.setInstructor(in);
 //                    courses.push_back(c);
-                    string CourseInput("INSERT INTO STUDENT VALUES(98754, 'History','Mr Map' ,'HISS', 'MF', 2, 2, 1000, 2019);");
+                    string CourseInput("INSERT INTO COURSE VALUES(98754, 'History','Mr Map' ,'HISS', 'MF', 2, 2, 1000, 2019);");
                     std::cout << CourseInput << std::endl;
 
                     exit = sqlite3_exec(DB, CourseInput.c_str(), callback, NULL, NULL);
