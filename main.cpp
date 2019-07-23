@@ -141,27 +141,37 @@ int main(int argc, char **argv) {
                     cout << endl << query << endl;
                     sqlite3_exec(DB, query.c_str(), callback, NULL, NULL);
                 } else if (choice == 3) {//add course
-                    course c;
-                    std::cout << "You wish to enter a course\n"
-                                 "Please Enter the course name\n";
-                    std::string n = "";
-                    std::string in = "";
-                    int crn = 0;
-                    int level = 0;
-                    std::cin.ignore();
-                    std::getline(std::cin, n);
-                    c.setName(n);
-                    std::cout << "Enter the level for the course\n";
-                    std::cin >> level;
-                    c.setLevel(level);
-                    std::cout << "Enter the CRN number for the course\n";
-                    std::cin >> crn;
-                    c.setCrn(crn);
-                    std::cout << "Enter the instructor\n";
-                    std::cin.ignore();
-                    std::getline(std::cin, in);
-                    c.setInstructor(in);
-                    courses.push_back(c);
+//                    course c;
+//                    std::cout << "You wish to enter a course\n"
+//                                 "Please Enter the course CRN\n";
+//                    std::string n = "";
+//                    std::string in = "";
+//                    int crn = 0;
+//                    int level = 0;
+//                    std::cin.ignore();
+//                    std::getline(std::cin, n);
+//                    c.setName(n);
+//                    std::cout << "Enter the level for the course\n";
+//                    std::cin >> level;
+//                    c.setLevel(level);
+//                    std::cout << "Enter the CRN number for the course\n";
+//                    std::cin >> crn;
+//                    c.setCrn(crn);
+//                    std::cout << "Enter the instructor\n";
+//                    std::cin.ignore();
+//                    std::getline(std::cin, in);
+//                    c.setInstructor(in);
+//                    courses.push_back(c);
+                    string CourseInput("INSERT INTO STUDENT VALUES(98754, 'History','Mr Map' ,'HISS', 'MF', 2, 2, 1000, 2019);");
+                    std::cout << CourseInput << std::endl;
+
+                    exit = sqlite3_exec(DB, CourseInput.c_str(), callback, NULL, NULL);
+
+                    if (exit != SQLITE_OK) {
+                        std::cerr << "Error Insert" << std::endl;
+                        sqlite3_free(messageError);
+                    } else
+                        std::cout << "Records created Successfully!" << std::endl;
 
                 } else if (choice == 4) {
 //                    for (std::list<course>::iterator it = courses.begin(); it != courses.end(); ++it) {
