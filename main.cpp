@@ -281,7 +281,7 @@ int main(int argc, char **argv) {
                     //   std::cout << "Please enter Dept. to find instructor availabilty for classes\n";
 //                    std::string deptIn;
 //                    cin >> deptIn;
-                    if(argc==0)
+                    if(argv==0)
                     {
                         std::cout<<"There are no instructors that can teach this course\n";
                     }
