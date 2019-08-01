@@ -43,7 +43,7 @@ int main() {
                            "\nEnter 5 to remove course(s)"
                            "\nEnter 6 to add instructor"
                            "\nEnter 7 to print instructors"
-                           "\nEnter 8 to set a hold on a student\n";
+                           "\nEnter 8 to manage the holds on students\n";
                 std::cin >> choice;
                 if (choice == 1) {
                     //add student
@@ -141,6 +141,11 @@ int main() {
 
                 }
                 else if (choice == 8){
+                    int select = 0;
+                    //TODO undo hold
+                    std::cout <<"Would you like to hold(1) or unhold(2)\n";
+                    std::cin >> select;
+                    if(select == 1){
                     std::cout << "Enter a student ID to put a hold on\n";
                     int tempID = 0;
                     int hit = 0;
@@ -151,7 +156,21 @@ int main() {
                             hit = 1;
                         }
                     }
-                    if (hit == 0){std::cout << "Invalid ID\n";}
+                    if (hit == 0){std::cout << "Invalid ID\n";}}
+                    else if (select == 2){
+                        std::cout << "Enter a student ID to take a hold off\n";
+                        int tempID = 0;
+                        int hit = 0;
+                        std::cin >> tempID;
+                        for (std::list<student>::iterator holdIt = students.begin(); holdIt != students.end(); ++holdIt){
+                            if (holdIt->getId() == tempID){
+                                holdIt->hold = 0;
+                                hit = 1;
+                            }
+                        }
+                        if (hit == 0){std::cout << "Invalid ID\n";}
+                    }
+                  else{std::cout <<"invalid choice\n";}
                 }
                 else if (choice == 0) {
                     std::cout << "exiting\n";
@@ -205,7 +224,7 @@ int main() {
 
                     }
                 }}
-             else { std::cout << "Student ID doesn't exist"; }}
+             }
         }
             /**
              * menu for instructor
