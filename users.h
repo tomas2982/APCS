@@ -46,7 +46,7 @@ public:
     student(){}
 
     ~student() {}
-
+    int hold = 0;
     void setMajor(std::string m) {
         major = m;
     }

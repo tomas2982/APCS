@@ -42,7 +42,8 @@ int main() {
                            "\nEnter 4 to print courses"
                            "\nEnter 5 to remove course(s)"
                            "\nEnter 6 to add instructor"
-                           "\nEnter 7 to print instructors\n";
+                           "\nEnter 7 to print instructors"
+                           "\nEnter 8 to set a hold on a student\n";
                 std::cin >> choice;
                 if (choice == 1) {
                     //add student
@@ -138,7 +139,21 @@ int main() {
                         std::cout << it->getName() << "\n";
                     }
 
-                } else if (choice == 0) {
+                }
+                else if (choice == 8){
+                    std::cout << "Enter a student ID to put a hold on\n";
+                    int tempID = 0;
+                    int hit = 0;
+                    std::cin >> tempID;
+                    for (std::list<student>::iterator holdIt = students.begin(); holdIt != students.end(); ++holdIt){
+                        if (holdIt->getId() == tempID){
+                            holdIt->hold = 1;
+                            hit = 1;
+                        }
+                    }
+                    if (hit == 0){std::cout << "Invalid ID\n";}
+                }
+                else if (choice == 0) {
                     std::cout << "exiting\n";
                     break;
                 } else { std::cout << "Invalid input\n"; }
@@ -164,6 +179,9 @@ int main() {
                                 << "Enter 1 to register for courses\nEnter 2 to view your schedule\nEnter 0 to logout\n";
                         std::cin >> in;
                         if (in == 1) {
+                            if(student_it->hold == 1){std::cout << "There is currently a hold on your account but you can still view classes\n";
+                                }
+                            else{
                             std::cout << "Enter the number of courses to enter\n";
                             std::cin >> x;
                             std::cout << "Enter the " << x << " course(s) crn numbers followed by a newline or space\n";
@@ -172,7 +190,8 @@ int main() {
                                 std::cin >> crn;
                                 student_it->setCrn(crn);
                             }
-                        }//if
+                        }
+                        }
                         else if (in == 2) {
                             std::cout << student_it->getName() << " is registered for classes: ";
                             student_it->printCourses();
@@ -183,10 +202,10 @@ int main() {
                             break;
                         } else {
                             std::cout << "Invalid input\n";
-                        }
+
                     }
-                } else { std::cout << "Student ID doesn't exist"; }
-            }
+                }}
+             else { std::cout << "Student ID doesn't exist"; }}
         }
             /**
              * menu for instructor
